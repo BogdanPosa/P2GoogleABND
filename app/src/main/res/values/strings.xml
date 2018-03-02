@@ -18,5 +18,7 @@
     <string name="SubmitRound">"Submit"</string>
     <string name="Reset">"Reset"</string>
     <string name="help">"help"</string>
+    <string name="desc1">"Background image"</string>
+    <string name="desc2">"Banner image"</string>
 
 </resources>
