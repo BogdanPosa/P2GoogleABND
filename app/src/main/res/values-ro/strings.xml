@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">HighScore</string>
+
+    <string name="Player1"><b>Jucator 1</b></string>
+    <string name="scoreA">"0"</string>
+    <string name="Ax3Points">"Tripla"</string>
+    <string name="Ax2Points">"Dubla"</string>
+    <string name="ASimpleShot">"Simpla"</string>
+    <string name="hint1">"Punctaj jucator 1"</string>
+
+    <string name="hint2">"Punctaj jucator 2"</string>
+    <string name="Player2"><b>Jucator 2</b></string>
+    <string name="scoreB">"0"</string>
+    <string name="Bx3Points">"Tripla"</string>
+    <string name="Bx2Points">"Dubla"</string>
+    <string name="BSimpleShot">"Simpla"</string>
+
+    <string name="SubmitRound">"Comparare scor"</string>
+    <string name="Reset">"Resetare scor"</string>
+    <string name="help">"Ajutor"</string>
+    <string name="desc1">"Imagine de fundal"</string>
+    <string name="desc2">"Banner image"</string>
+
+</resources>
