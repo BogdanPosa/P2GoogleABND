@@ -8,118 +8,241 @@
         android:contentDescription="@string/desc1"
         android:scaleType="fitXY"
         android:src="@drawable/back2" />
-    <Button
-        style="@style/Button"
+
+    <ToggleButton
+        android:id="@+id/toggleHelp"
         android:layout_width="wrap_content"
-        android:layout_margin="2dp"
+        android:layout_height="wrap_content"
         android:onClick="showHint"
-        android:text="@string/help" />
-    <!--<ToggleButton-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="@string/helphint"-->
-        <!--android:id="@+id/toggleHelp"/>-->
+        android:textOff="@string/Hidehint"
+        android:textOn="@string/Showhint" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <ImageView
-                style="@style/Image"
-                android:contentDescription="@string/desc2"
-                android:padding="12dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/dartboard" />
+
             <LinearLayout
+                android:id="@+id/LL1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
+
+                <ImageView
+                    style="@style/Image"
+                    android:contentDescription="@string/desc2"
+                    android:paddingLeft="25dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/dartboard" />
+
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-                    <EditText
-                        android:id="@+id/Player1"
-                        style="@style/EditText"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginStart="20dp"
-                        android:hint="@string/hint1" />
-                    <TextView
-                        android:id="@+id/team_a_score"
-                        style="@style/Title"
-                        android:gravity="center"
-                        android:text="@string/scoreA" />
-                    <Spinner
-                        android:id="@+id/spinnerPlayer1"
-                        android:layout_width="match_parent"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginStart="20dp" />
-                    <Button
-                        style="@style/Button"
-                        android:onClick="addThreeForTeamA"
-                        android:text="@string/Ax3Points" />
-                    <Button
-                        style="@style/Button"
-                        android:onClick="addTwoForTeamA"
-                        android:text="@string/Ax2Points" />
-                    <Button
-                        style="@style/Button"
-                        android:onClick="addOneForTeamA"
-                        android:text="@string/ASimpleShot" />
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <EditText
+                            android:id="@+id/Player1"
+                            style="@style/EditText"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginStart="20dp"
+                            android:hint="@string/hint1" />
+
+                        <TextView
+                            android:id="@+id/team_a_score"
+                            style="@style/Title"
+                            android:gravity="center"
+                            android:text="@string/scoreA" />
+
+                        <TextView
+                            android:id="@+id/P1remainingShots"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:text="@string/p1remainingshots" />
+
+                        <Spinner
+                            android:id="@+id/spinnerPlayer1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginStart="20dp" />
+
+                        <Button
+                            style="@style/Button"
+                            android:onClick="addThreeForTeamA"
+                            android:text="@string/Ax3Points" />
+
+                        <Button
+                            style="@style/Button"
+                            android:onClick="addTwoForTeamA"
+                            android:text="@string/Ax2Points" />
+
+                        <Button
+                            style="@style/Button"
+                            android:onClick="addOneForTeamA"
+                            android:text="@string/ASimpleShot" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/darker_gray" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <EditText
+                            android:id="@+id/Player2"
+                            style="@style/EditText"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginStart="20dp"
+                            android:hint="@string/hint2" />
+
+                        <TextView
+                            android:id="@+id/team_b_score"
+                            style="@style/Title"
+                            android:text="@string/scoreB" />
+
+                        <TextView
+                            android:id="@+id/P2remainingShots"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:text="@string/p2remainingshots" />
+
+                        <Spinner
+                            android:id="@+id/spinnerPlayer2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginStart="20dp" />
+
+                        <Button
+                            style="@style/Button"
+                            android:onClick="addThreeForTeamB"
+                            android:text="@string/Bx3Points" />
+
+                        <Button
+                            style="@style/Button"
+                            android:onClick="addTwoForTeamB"
+                            android:text="@string/Bx2Points" />
+
+                        <Button
+                            style="@style/Button"
+                            android:onClick="addOneForTeamB"
+                            android:text="@string/BSimpleShot" />
+                    </LinearLayout>
                 </LinearLayout>
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/darker_gray" />
+
+                <Button
+                    android:id="@+id/SubmitScore"
+                    style="@style/Button"
+                    android:onClick="compare"
+                    android:text="@string/SubmitRound" />
+                <!--<EditText-->
+                <!--android:inputType="number"-->
+                <!--android:id="@+id/MaximShots"-->
+                <!--style="@style/EditText"-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--android:layout_marginLeft="20dp"-->
+                <!--android:layout_marginStart="20dp"-->
+                <!--android:hint="@string/hint3" />-->
+                <Button
+                    style="@style/Button"
+                    android:layout_width="match_parent"
+                    android:onClick="reset"
+                    android:text="@string/Reset" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LL2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:orientation="vertical">
+
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:orientation="vertical">
-                    <EditText
-                        android:id="@+id/Player2"
-                        style="@style/EditText"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginStart="20dp"
-                        android:hint="@string/hint2" />
+
                     <TextView
-                        android:id="@+id/team_b_score"
                         style="@style/Title"
-                        android:text="@string/scoreB" />
-                    <Spinner
-                        android:id="@+id/spinnerPlayer2"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginStart="20dp" />
-                    <Button
-                        style="@style/Button"
-                        android:onClick="addThreeForTeamB"
-                        android:text="@string/Bx3Points" />
-                    <Button
-                        style="@style/Button"
-                        android:onClick="addTwoForTeamB"
-                        android:text="@string/Bx2Points" />
-                    <Button
-                        style="@style/Button"
-                        android:onClick="addOneForTeamB"
-                        android:text="@string/BSimpleShot" />
+                        android:layout_gravity="center_horizontal"
+                        android:text="@string/hinthead1" />
+
+                    <TextView
+                        style="@style/SubTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="@string/hintSubtitle1" />
+
+                    <ImageView
+                        style="@style/Image"
+                        android:contentDescription="@string/desc3"
+                        android:padding="12dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/dartboard2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="@string/hinthead2" />
+
+                    <TextView
+                        style="@style/SubTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="@string/hintSubtitle2" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="@string/hinthead3" />
+
+                    <TextView
+                        style="@style/SubTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="@string/hintSubtitle3" />
+
                 </LinearLayout>
             </LinearLayout>
-            <Button
-                android:id="@+id/SubmitShotA"
-                style="@style/Button"
-                android:onClick="compare"
-                android:text="@string/SubmitRound" />
-            <Button
-                style="@style/Button"
-                android:layout_width="match_parent"
-                android:onClick="reset"
-                android:text="@string/Reset" />
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

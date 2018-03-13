@@ -20,5 +20,15 @@
     <string name="help">"Ajutor"</string>
     <string name="desc1">"Imagine de fundal"</string>
     <string name="desc2">"Banner image"</string>
+    <string name="Showhint">Arata indiciu</string>
+    <string name="Hidehint">Ascunde indiciu</string>
+    <string name="desc3">Hint image</string>
+    <string name="hinthead1">Calculul scorului</string>
+    <string name="hintSubtitle1">Hint1 content</string>
+    <string name="hinthead2">Compararea scorului</string>
+    <string name="hintSubtitle2">Content hint2</string>
+    <string name="hinthead3">Reset</string>
+    <string name="hintSubtitle3">Content hint3</string>
+    <string name="hint3">Change the maxim number of shots</string>
 
 </resources>

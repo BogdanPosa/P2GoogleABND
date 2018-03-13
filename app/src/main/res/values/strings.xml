@@ -21,5 +21,18 @@
     <string name="desc1">"Background image"</string>
     <string name="desc2">"Banner image"</string>
     <string name="helphint">helpHint</string>
+    <string name="points">" Points"</string>
+    <string name="Showhint">Show hint</string>
+    <string name="Hidehint">Hide hint</string>
+    <string name="desc3">Hint image</string>
+    <string name="hinthead1">Score Calculation</string>
+    <string name="hintSubtitle1">Hint1 content</string>
+    <string name="hinthead2">Score comparing</string>
+    <string name="hintSubtitle2">Content hint2</string>
+    <string name="hinthead3">Reset</string>
+    <string name="hintSubtitle3">Content hint3</string>
+    <string name="p1remainingshots">"Remaining Shots: "%d</string>
+    <string name="p2remainingshots">"Remaining Shots: "%d</string>
+    <string name="hint3">Change the maxim number of shots</string>
 
 </resources>
