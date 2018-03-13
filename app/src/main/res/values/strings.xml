@@ -6,9 +6,9 @@
     <string name="Ax3Points">"x3 Points"</string>
     <string name="Ax2Points">"x2 Points"</string>
     <string name="ASimpleShot">"Simple Shot"</string>
-    <string name="hint1">"Player 1 points"</string>
+    <string name="hint1">"Player 1 name"</string>
 
-    <string name="hint2">"Player 2 points"</string>
+    <string name="hint2">"Player 2 name"</string>
     <string name="Player2"><b>Player 2</b></string>
     <string name="scoreB">"0"</string>
     <string name="Bx3Points">"x3 Points"</string>
@@ -20,5 +20,6 @@
     <string name="help">"help"</string>
     <string name="desc1">"Background image"</string>
     <string name="desc2">"Banner image"</string>
+    <string name="helphint">helpHint</string>
 
 </resources>

@@ -6,101 +6,124 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    int scoreTeamA = 0;
-    int scoreTeamB = 0;
-    int finalValue;
-    boolean scorOK;
-    EditText textScore;
-
+    int scorePlayer1 = 0;
+    int scorePlayer2 = 0;
+    int finalValuePlayer1, finalValuePlayer2;
+//    ToggleButton toggle;
+    EditText Player1Name, Player2Name;
+    Spinner spinnerPlayer1, spinnerPlayer2;
+    List<String> lstSource = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-   textScore = findViewById(R.id.TAthrow1);
+//        toggle = findViewById(R.id.toggleHelp);
+        Player1Name = findViewById(R.id.Player1);
+        Player2Name = findViewById(R.id.Player2);
+
+        generateData();
+
+        spinnerPlayer1 = findViewById(R.id.spinnerPlayer1);
+        SpinnerAdapter adapter = new SpinnerAdapter(lstSource, MainActivity.this);
+        spinnerPlayer1.setAdapter(adapter);
+
+        spinnerPlayer2 = findViewById(R.id.spinnerPlayer2);
+        SpinnerAdapter adapter2 = new SpinnerAdapter(lstSource, MainActivity.this);
+        spinnerPlayer2.setAdapter(adapter2);
+
     }
 
+    private void generateData() {
+        for (int i = 0; i < 23; i++) {
+            lstSource.add("Item " + i);
+        }
+    }
 
-    /**x
+    /**
+     * x
      * This method takes the user input
      */
 
     public void getScore() {
-        String value = textScore.getText().toString();
-        if (!value.isEmpty()) {
-            finalValue = Integer.parseInt(value);
-        } else {
-            Context context = getApplicationContext();
-            Toast.makeText(context, "Please enter a numeric value!", Toast.LENGTH_SHORT).show();
-        }
+        finalValuePlayer1 = spinnerPlayer1.getSelectedItemPosition();
+        finalValuePlayer2 = spinnerPlayer2.getSelectedItemPosition();
     }
 
     /**
-     * This method checks that the user input is ok
-     */
-
-
-    public void checkScore() {
-        if (finalValue < 101) {
-            scorOK = true;
-        } else {
-            scorOK = false;
-            Context context = getApplicationContext();
-            CharSequence text = "The score you entered is too big!";
-            int duration = Toast.LENGTH_LONG;
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
-        }
-    }
-
-    /**
-     * Increase the score for Team A by 1 point.
+     * Increase the score for Team A by 1x point.
      */
 
     public void addOneForTeamA(View v) {
         getScore();
-        checkScore();
-        if (scorOK) {
-            scoreTeamA = scoreTeamA + finalValue;
-            displayForTeamA(scoreTeamA);
+        if (finalValuePlayer1 < 21) {
+            scorePlayer1 = scorePlayer1 + finalValuePlayer1;
+        } else {
+            if (finalValuePlayer1 == 21) {
+                scorePlayer1 = scorePlayer1 + 25;
+            } else {
+                if (finalValuePlayer1 == 22) {
+                    scorePlayer1 = scorePlayer1 + 50;
+                }
+            }
         }
-        textScore.setText("");
+        displayForTeamA(scorePlayer1);
+
+        spinnerPlayer1.setSelection(0);
     }
 
     /**
-     * Increase the score for Team A by 2 points.
+     * Increase the score for Team A by 2x points.
      */
     public void addTwoForTeamA(View v) {
         getScore();
-        checkScore();
-        if (scorOK) {
-            scoreTeamA = scoreTeamA + 2 * finalValue;
-            displayForTeamA(scoreTeamA);
+        if (finalValuePlayer1 == 0 || finalValuePlayer1 == 21 || finalValuePlayer1 == 22) {
+            Context context = getApplicationContext();
+            CharSequence text = "Can't have a double of Bullseye or Fault";
+            int duration = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        } else {
+            if (finalValuePlayer1 < 21) {
+                scorePlayer1 = scorePlayer1 + 2 * finalValuePlayer1;
+            }
         }
-        textScore.setText("");
-
+        displayForTeamA(scorePlayer1);
+        spinnerPlayer1.setSelection(0);
     }
 
     /**
-     * Increase the score for Team A by 3 points.
+     * Increase the score for Team A by 3x points.
      */
     public void addThreeForTeamA(View v) {
         getScore();
-        checkScore();
-        if (scorOK) {
-            scoreTeamA = scoreTeamA + 3 * finalValue;
-            displayForTeamA(scoreTeamA);
+        if (finalValuePlayer1 == 0 || finalValuePlayer1 == 21 || finalValuePlayer1 == 22) {
+            Context context = getApplicationContext();
+            CharSequence text = "Can't have a triple of Bullseye or Fault";
+            int duration = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        } else {
+            if (finalValuePlayer1 < 21) {
+                scorePlayer1 = scorePlayer1 + 3 * finalValuePlayer1;
+            }
         }
-        textScore.setText("");
-
+        displayForTeamA(scorePlayer1);
+        spinnerPlayer1.setSelection(0);
     }
 
     /**
@@ -120,52 +143,78 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Increase the score for Team B by 1 point.
+     * Increase the score for Team A by 1x point.
      */
+
     public void addOneForTeamB(View v) {
         getScore();
-        checkScore();
-        if (scorOK) {
-            scoreTeamB = scoreTeamB + finalValue;
-            displayForTeamB(scoreTeamB);
+        if (finalValuePlayer2 < 21) {
+            scorePlayer2 = scorePlayer2 + finalValuePlayer2;
+        } else {
+            if (finalValuePlayer2 == 21) {
+                scorePlayer2 = scorePlayer2 + 25;
+            } else {
+                if (finalValuePlayer2 == 22) {
+                    scorePlayer2 = scorePlayer2 + 50;
+                }
+            }
         }
-        textScore.setText("");
+        displayForTeamB(scorePlayer2);
+
+        spinnerPlayer2.setSelection(0);
     }
 
     /**
-     * Increase the score for Team B by 2 points.
+     * Increase the score for Team B by 2x points.
      */
     public void addTwoForTeamB(View v) {
         getScore();
-        checkScore();
-        if (scorOK) {
-            scoreTeamB = scoreTeamB + 2 * finalValue;
-            displayForTeamB(scoreTeamB);
+        if (finalValuePlayer2 == 0 || finalValuePlayer2 == 21 || finalValuePlayer2 == 22) {
+            Context context = getApplicationContext();
+            CharSequence text = "Can't have a double of Bullseye or Fault";
+            int duration = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        } else {
+            if (finalValuePlayer2 < 21) {
+                scorePlayer2 = scorePlayer2 + 2 * finalValuePlayer2;
+            }
         }
-        textScore.setText("");
+        displayForTeamB(scorePlayer2);
+        spinnerPlayer2.setSelection(0);
     }
 
     /**
-     * Increase the score for Team B by 3 points.
+     * Increase the score for Team B by 3x points.
      */
     public void addThreeForTeamB(View v) {
         getScore();
-        checkScore();
-        if (scorOK) {
-            scoreTeamB = scoreTeamB + 3 * finalValue;
-            displayForTeamB(scoreTeamB);
+        if (finalValuePlayer2 == 0 || finalValuePlayer2 == 21 || finalValuePlayer2 == 22) {
+            Context context = getApplicationContext();
+            CharSequence text = "Can't have a triple of Bullseye or Fault";
+            int duration = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        } else {
+            if (finalValuePlayer2 < 21) {
+                scorePlayer2 = scorePlayer2 + 3 * finalValuePlayer2;
+            }
         }
-        textScore.setText("");
+        displayForTeamB(scorePlayer2);
+        spinnerPlayer2.setSelection(0);
     }
 
     /**
      * Reset the score for Team
      */
     public void reset(View v) {
-        scoreTeamA = 0;
-        displayForTeamA(scoreTeamA);
-        scoreTeamB = 0;
-        displayForTeamB(scoreTeamB);
+        scorePlayer1 = 0;
+        displayForTeamA(scorePlayer1);
+        scorePlayer2 = 0;
+        displayForTeamB(scorePlayer2);
+        Player1Name.setText("");
+        Player2Name.setText("");
+        spinnerPlayer1.setSelection(0);
     }
 
     /**
@@ -173,26 +222,41 @@ public class MainActivity extends AppCompatActivity {
      */
 
     public void compare(View v) {
-        if (scoreTeamA > scoreTeamB) {
-            Context context = getApplicationContext();
-            CharSequence text = "Player A won!";
-            int duration = Toast.LENGTH_LONG;
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
-        } else {
-            if (scoreTeamB > scoreTeamA) {
+        String namePlayer1 = Player1Name.getText().toString();
+        String namePlayer2 = Player2Name.getText().toString();
+        if (!namePlayer1.isEmpty() && !namePlayer2.isEmpty()) {
+
+            if (scorePlayer2 > scorePlayer1) {
                 Context context = getApplicationContext();
-                CharSequence text = "player B won!";
+                CharSequence text = namePlayer2 + " won!";
                 int duration = Toast.LENGTH_LONG;
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
             } else {
-                if (scoreTeamB == scoreTeamA) {
+                if (scorePlayer1 > scorePlayer2) {
                     Context context = getApplicationContext();
-                    CharSequence text = "Tie!";
+                    CharSequence text = namePlayer1 + " won!";
                     int duration = Toast.LENGTH_LONG;
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
+                } else {
+                    if (scorePlayer1 == scorePlayer2) {
+                        Context context = getApplicationContext();
+                        CharSequence text = "Tie!";
+                        int duration = Toast.LENGTH_LONG;
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                    }
+                }
+            }
+        } else {
+            if (namePlayer1.isEmpty()) {
+                Context context = getApplicationContext();
+                Toast.makeText(context, "Please enter a name for player 1!", Toast.LENGTH_SHORT).show();
+            } else {
+                if (namePlayer2.isEmpty()) {
+                    Context context = getApplicationContext();
+                    Toast.makeText(context, "Please enter a name for player 2!", Toast.LENGTH_SHORT).show();
                 }
             }
         }
@@ -216,7 +280,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Reset the score for Team
+     * Show hint
      */
     public void showHint(View v) {
         Context context = getApplicationContext();
@@ -225,4 +289,23 @@ public class MainActivity extends AppCompatActivity {
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
     }
+
+
+//            toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//            if (isChecked) {
+//                Context context = getApplicationContext();
+//                CharSequence text = "Simple game of darts, each player throws 3 darts each round. The player who makes more points wins!";
+//                int duration = Toast.LENGTH_LONG;
+//                Toast toast = Toast.makeText(context, text, duration);
+//                toast.show();
+//            } else {
+//                Context context = getApplicationContext();
+//                CharSequence text = "Click the off button for help";
+//                int duration = Toast.LENGTH_LONG;
+//                Toast toast = Toast.makeText(context, text, duration);
+//                toast.show();
+//            }
+//        }
+//    });
 }
