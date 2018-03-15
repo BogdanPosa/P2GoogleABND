@@ -7,33 +7,41 @@
     <string name="Ax2Points">"x2 Points"</string>
     <string name="ASimpleShot">"Simple Shot"</string>
     <string name="hint1">"Player 1 name"</string>
-
     <string name="hint2">"Player 2 name"</string>
     <string name="Player2"><b>Player 2</b></string>
     <string name="scoreB">"0"</string>
     <string name="Bx3Points">"x3 Points"</string>
     <string name="Bx2Points">"x2 Points"</string>
     <string name="BSimpleShot">"Simple Shot"</string>
-
-    <string name="SubmitRound">"Submit"</string>
-    <string name="Reset">"Reset"</string>
-    <string name="help">"help"</string>
-    <string name="desc1">"Background image"</string>
-    <string name="desc2">"Banner image"</string>
+    <string name="SubmitRound">Submit</string>
+    <string name="Reset">Reset</string>
+    <string name="desc1">Background image</string>
+    <string name="desc2">Banner image</string>
     <string name="helphint">helpHint</string>
     <string name="points">" Points"</string>
     <string name="Showhint">Show hint</string>
     <string name="Hidehint">Hide hint</string>
     <string name="desc3">Hint image</string>
     <string name="hinthead1">Score Calculation</string>
-    <string name="hintSubtitle1">"Based on the last throw performance\n user have to select  the last points"</string>
+    <string name="hintSubtitle1">Based on the last throw performance\n user have to select  the last points</string>
     <string name="hinthead2">Score comparing</string>
-    <string name="hintSubtitle2">"After both of the players used all of their throws the only think left to do is to compare the score"</string>
+    <string name="hintSubtitle2">After both of the players used all of their throws the only think left to do is to compare the score</string>
     <string name="hinthead3">Reset</string>
-    <string name="hintSubtitle3">Content hint3</string>
-    <string name="p1remainingshots">"Remaining Shots: "%d</string>
-    <string name="p2remainingshots">"Remaining Shots: "%d</string>
-    <string name="hint3">Change the maxim number of shots</string>
+    <string name="hintSubtitle3">Pressing this button will: \n-reset the score \n-delete player names \n-set the maximum number of shots to default value</string>
+    <string name="p1remainingshots">Remaining Shots: %d</string>
+    <string name="p2remainingshots">Remaining Shots: %d</string>
+    <string name="hint3">Maxim number of shots</string>
     <string name="change">Change number of shots</string>
+    <string name="toast1">Can\'t have a double of Bullseye or Fault</string>
+    <string name="toast9">Can\'t have a triple of Bullseye or Fault</string>
+    <string name="remainingShots">Remaining shots:</string>
+    <string name="toast2">Player names must differ!</string>
+    <string name="toast3">Not all the shots are taken!</string>
+    <string name="toast4">" won!"</string>
+    <string name="toast5">Tie!</string>
+    <string name="toast6">Please enter a name for player 1!</string>
+    <string name="toast7">Please enter a name for player 2!</string>
+    <string name="toast8">Please insert a smaller number of shots!</string>
+    <string name="toast10">Enter a maxim value before</string>
 
 </resources>

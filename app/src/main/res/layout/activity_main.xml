@@ -14,8 +14,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="showHint"
-        android:textOn="@string/Hidehint"
-        android:textOff="@string/Showhint"/>
+        android:textOff="@string/Showhint"
+        android:textOn="@string/Hidehint" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -35,7 +35,10 @@
                 <ImageView
                     style="@style/Image"
                     android:contentDescription="@string/desc2"
-                    android:paddingLeft="25dp"
+                    android:paddingEnd="0dp"
+                    android:paddingLeft="45dp"
+                    android:paddingRight="0dp"
+                    android:paddingStart="45dp"
                     android:scaleType="fitCenter"
                     android:src="@drawable/dartboard" />
 
@@ -146,26 +149,28 @@
                             android:text="@string/BSimpleShot" />
                     </LinearLayout>
                 </LinearLayout>
+
                 <Button
                     android:id="@+id/SubmitScore"
                     style="@style/Button"
                     android:onClick="compare"
                     android:text="@string/SubmitRound" />
+
                 <Button
                     style="@style/Button"
                     android:layout_width="match_parent"
                     android:onClick="reset"
                     android:text="@string/Reset" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
+
                     <EditText
                         android:id="@+id/MaximShots"
                         style="@style/EditText"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginStart="20dp"
                         android:hint="@string/hint3"
                         android:inputType="number" />
 
@@ -178,6 +183,7 @@
                         android:text="@string/change" />
                 </LinearLayout>
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/LL2"
                 android:layout_width="match_parent"
@@ -186,8 +192,10 @@
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@color/colorPrimaryDark"
                     android:orientation="vertical">
 
                     <TextView
@@ -215,6 +223,8 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@color/colorPrimaryDark"
                     android:orientation="vertical">
 
                     <TextView
@@ -236,6 +246,8 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@color/colorPrimaryDark"
                     android:orientation="vertical">
 
                     <TextView

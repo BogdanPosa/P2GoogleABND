@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -17,12 +16,11 @@ import android.widget.ToggleButton;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class MainActivity extends AppCompatActivity {
 
     int scorePlayer1 = 0;
     int scorePlayer2 = 0;
-    int remainingShotsPlayer1, remainingShotsPlayer2 ;
+    int remainingShotsPlayer1, remainingShotsPlayer2;
     int finalValuePlayer1, finalValuePlayer2;
     boolean Player1throw, Player2throw;
     ToggleButton toggle;
@@ -69,6 +67,10 @@ public class MainActivity extends AppCompatActivity {
         P2Remaining.setText(getString(R.string.p2remainingshots, remainingShotsPlayer2));
     }
 
+    /**
+     * This method generates the list view elements
+     */
+
     int i;
 
     private void generateData() {
@@ -86,7 +88,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     *
      * This method takes the user input
      */
 
@@ -126,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
         Player1throw = true;
         if (finalValuePlayer1 == 0 || finalValuePlayer1 == 21 || finalValuePlayer1 == 22) {
             Context context = getApplicationContext();
-            CharSequence text = "Can't have a double of Bullseye or Fault";
+            CharSequence text = getString(R.string.toast1);
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
@@ -148,8 +149,8 @@ public class MainActivity extends AppCompatActivity {
         Player1throw = true;
         if (finalValuePlayer1 == 0 || finalValuePlayer1 == 21 || finalValuePlayer1 == 22) {
             Context context = getApplicationContext();
-            CharSequence text = "Can't have a triple of Bullseye or Fault";
-            int duration = Toast.LENGTH_LONG;
+            CharSequence text = getString(R.string.toast9);
+            int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
         } else {
@@ -211,8 +212,8 @@ public class MainActivity extends AppCompatActivity {
         remainingShots();
         if (finalValuePlayer2 == 0 || finalValuePlayer2 == 21 || finalValuePlayer2 == 22) {
             Context context = getApplicationContext();
-            CharSequence text = "Can't have a double of Bullseye or Fault";
-            int duration = Toast.LENGTH_LONG;
+            CharSequence text = getString(R.string.toast1);
+            int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
         } else {
@@ -234,8 +235,8 @@ public class MainActivity extends AppCompatActivity {
         remainingShots();
         if (finalValuePlayer2 == 0 || finalValuePlayer2 == 21 || finalValuePlayer2 == 22) {
             Context context = getApplicationContext();
-            CharSequence text = "Can't have a triple of Bullseye or Fault";
-            int duration = Toast.LENGTH_LONG;
+            CharSequence text = getString(R.string.toast9);
+            int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
         } else {
@@ -258,10 +259,12 @@ public class MainActivity extends AppCompatActivity {
         Player1Name.setText("");
         Player2Name.setText("");
         spinnerPlayer1.setSelection(0);
-        remainingShotsPlayer1= Integer.parseInt(maxShots);
+        maxShots = "5";
+        remainingShotsPlayer1 = Integer.parseInt(maxShots);
         P1Remaining.setText(getString(R.string.p1remainingshots, remainingShotsPlayer1));
-        remainingShotsPlayer2= Integer.parseInt(maxShots);
+        remainingShotsPlayer2 = Integer.parseInt(maxShots);
         P2Remaining.setText(getString(R.string.p2remainingshots, remainingShotsPlayer2));
+        ETmaximShots.setText("");
     }
 
     /**
@@ -276,10 +279,11 @@ public class MainActivity extends AppCompatActivity {
         } else {
             if (Player1throw) {
                 Context context = getApplicationContext();
-                CharSequence text = "Remaining shots: " + remainingShotsPlayer1;
+                CharSequence text = getString(R.string.remainingShots) + remainingShotsPlayer1;
                 int duration = Toast.LENGTH_SHORT;
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
+                Player1throw = false;
             }
         }
         if (Player2throw && remainingShotsPlayer2 != 0) {
@@ -288,12 +292,13 @@ public class MainActivity extends AppCompatActivity {
             P2Remaining.setText(getString(R.string.p2remainingshots, remainingShotsPlayer2));
 
         } else {
-            if (Player2throw) {
+            if (Player2throw && !Player1throw) {
                 Context context = getApplicationContext();
-                CharSequence text = "Remaining shots: " + remainingShotsPlayer2;
+                CharSequence text = getString(R.string.remainingShots) + remainingShotsPlayer2;
                 int duration = Toast.LENGTH_SHORT;
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
+                Player2throw = false;
             }
         }
     }
@@ -308,48 +313,70 @@ public class MainActivity extends AppCompatActivity {
         if (!namePlayer1.isEmpty() && !namePlayer2.isEmpty()) {
             if (namePlayer1.equals(namePlayer2)) {
                 Context context = getApplicationContext();
-                Toast.makeText(context, "Player names must differ!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, R.string.toast2, Toast.LENGTH_SHORT).show();
             } else {
-                    if(remainingShotsPlayer1 != 0 || remainingShotsPlayer2 != 0) {
-                        Context context = getApplicationContext();
-                        Toast.makeText(context, "Not all the shots are taken!", Toast.LENGTH_LONG).show();
-                    }else{
+                if (remainingShotsPlayer1 != 0 || remainingShotsPlayer2 != 0) {
+                    Context context = getApplicationContext();
+                    Toast.makeText(context, R.string.toast3, Toast.LENGTH_LONG).show();
+                } else {
 
-                        if (scorePlayer2 > scorePlayer1) {
+                    if (scorePlayer2 > scorePlayer1) {
+                        Context context = getApplicationContext();
+                        CharSequence text = namePlayer2 + getString(R.string.toast4);
+                        int duration = Toast.LENGTH_LONG;
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                    } else {
+                        if (scorePlayer1 > scorePlayer2) {
                             Context context = getApplicationContext();
-                            CharSequence text = namePlayer2 + " won!";
+                            CharSequence text = namePlayer1 + getString(R.string.toast4);
                             int duration = Toast.LENGTH_LONG;
                             Toast toast = Toast.makeText(context, text, duration);
                             toast.show();
                         } else {
-                            if (scorePlayer1 > scorePlayer2) {
+                            if (scorePlayer1 == scorePlayer2) {
                                 Context context = getApplicationContext();
-                                CharSequence text = namePlayer1 + " won!";
+                                CharSequence text = getString(R.string.toast5);
                                 int duration = Toast.LENGTH_LONG;
                                 Toast toast = Toast.makeText(context, text, duration);
                                 toast.show();
-                            } else {
-                                if (scorePlayer1 == scorePlayer2) {
-                                    Context context = getApplicationContext();
-                                    CharSequence text = "Tie!";
-                                    int duration = Toast.LENGTH_LONG;
-                                    Toast toast = Toast.makeText(context, text, duration);
-                                    toast.show();
-                                }
                             }
+                        }
                     }
                 }
             }
         } else {
             if (namePlayer1.isEmpty()) {
                 Context context = getApplicationContext();
-                Toast.makeText(context, "Please enter a name for player 1!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, R.string.toast6, Toast.LENGTH_SHORT).show();
             } else {
                 if (namePlayer2.isEmpty()) {
                     Context context = getApplicationContext();
-                    Toast.makeText(context, "Please enter a name for player 2!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.toast7, Toast.LENGTH_SHORT).show();
                 }
             }
+        }
+    }
+
+    /**
+     * This method changes the maximum number of shots
+     */
+    public void changeScore(View view) {
+        maxShots = ETmaximShots.getText().toString();
+        if (!maxShots.isEmpty()) {
+
+            remainingShotsPlayer1 = Integer.parseInt(maxShots);
+            remainingShotsPlayer2 = Integer.parseInt(maxShots);
+            if (remainingShotsPlayer1 < 100 && remainingShotsPlayer2 < 100) {
+                P1Remaining.setText(getString(R.string.p1remainingshots, remainingShotsPlayer1));
+                P2Remaining.setText(getString(R.string.p2remainingshots, remainingShotsPlayer2));
+            } else {
+                Context context = getApplicationContext();
+                Toast.makeText(context, R.string.toast8, Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Context context = getApplicationContext();
+            Toast.makeText(context, R.string.toast10, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -384,20 +411,4 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * This method changes the maximum number of shots
-     */
-    public void changeScore(View view) {
-        maxShots= ETmaximShots.getText().toString();
-
-        remainingShotsPlayer1 = Integer.parseInt(maxShots);
-        remainingShotsPlayer2 = Integer.parseInt(maxShots);
-        if(remainingShotsPlayer1<100 && remainingShotsPlayer2<100) {
-            P1Remaining.setText(getString(R.string.p1remainingshots, remainingShotsPlayer1));
-            P2Remaining.setText(getString(R.string.p2remainingshots, remainingShotsPlayer2));
-        }else{
-            Context context = getApplicationContext();
-            Toast.makeText(context, "Please insert a smaller number of shots!", Toast.LENGTH_SHORT).show();
-        }
-    }
 }

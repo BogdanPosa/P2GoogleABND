@@ -27,7 +27,7 @@ public class SpinnerAdapter extends BaseAdapter {
     public SpinnerAdapter(List<String> lstData, Activity activity) {
         this.lstData = lstData;
         this.activity = activity;
-        this.inflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        this.inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
@@ -48,8 +48,8 @@ public class SpinnerAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
-        if(convertView==null)
-            view = inflater.inflate(R.layout.spinner_item,null);
+        if (convertView == null)
+            view = inflater.inflate(R.layout.spinner_item, null);
         TextView tv = view.findViewById(R.id.textView);
         tv.setText(lstData.get(position));
         return view;
@@ -57,13 +57,13 @@ public class SpinnerAdapter extends BaseAdapter {
 
     @Override
     public View getDropDownView(int position, View convertView, ViewGroup parent) {
-        View view = super.getDropDownView(position,convertView,parent);
-        LinearLayout ll = (LinearLayout)view;
+        View view = super.getDropDownView(position, convertView, parent);
+        LinearLayout ll = (LinearLayout) view;
         TextView tv = ll.findViewById(R.id.textView);
-        tv.setPadding(20,0,0,0);
+        tv.setPadding(20, 0, 0, 0);
         tv.setGravity(Gravity.LEFT);
         tv.setTextColor(Color.parseColor("#333639"));
-        tv.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT));
+        tv.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
         return view;
     }
 }
