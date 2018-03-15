@@ -39,8 +39,8 @@
     <string name="toast3">Nu toate aruncarile au fost realizate!</string>
     <string name="toast4">" a castigat!"</string>
     <string name="toast5">Egalitate!</string>
-    <string name="toast6">Introdu un nume pentru jucatorul 1!</string>
-    <string name="toast7">Introdu un nume pentru jucatorul 2!</string>
+    <string name="toast6">Alege un nume pentru jucatorul 1!</string>
+    <string name="toast7">Alege un nume pentru jucatorul 2!</string>
     <string name="toast8">Alege un numar mai mic de aruncari!</string>
     <string name="toast10">Enter a maxim value before</string>
 
