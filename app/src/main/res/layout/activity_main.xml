@@ -14,8 +14,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="showHint"
-        android:textOff="@string/Hidehint"
-        android:textOn="@string/Showhint" />
+        android:textOn="@string/Hidehint"
+        android:textOff="@string/Showhint"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -146,27 +146,38 @@
                             android:text="@string/BSimpleShot" />
                     </LinearLayout>
                 </LinearLayout>
-
                 <Button
                     android:id="@+id/SubmitScore"
                     style="@style/Button"
                     android:onClick="compare"
                     android:text="@string/SubmitRound" />
-                <!--<EditText-->
-                <!--android:inputType="number"-->
-                <!--android:id="@+id/MaximShots"-->
-                <!--style="@style/EditText"-->
-                <!--android:layout_gravity="center_horizontal"-->
-                <!--android:layout_marginLeft="20dp"-->
-                <!--android:layout_marginStart="20dp"-->
-                <!--android:hint="@string/hint3" />-->
                 <Button
                     style="@style/Button"
                     android:layout_width="match_parent"
                     android:onClick="reset"
                     android:text="@string/Reset" />
-            </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <EditText
+                        android:id="@+id/MaximShots"
+                        style="@style/EditText"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginStart="20dp"
+                        android:hint="@string/hint3"
+                        android:inputType="number" />
 
+                    <Button
+                        style="@style/Button"
+                        android:layout_width="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:onClick="changeScore"
+                        android:padding="10dp"
+                        android:text="@string/change" />
+                </LinearLayout>
+            </LinearLayout>
             <LinearLayout
                 android:id="@+id/LL2"
                 android:layout_width="match_parent"

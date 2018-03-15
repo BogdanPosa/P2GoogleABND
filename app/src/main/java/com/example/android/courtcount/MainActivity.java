@@ -22,15 +22,16 @@ public class MainActivity extends AppCompatActivity {
 
     int scorePlayer1 = 0;
     int scorePlayer2 = 0;
-    int remainingShotsPlayer1, remainingShotsPlayer2;
+    int remainingShotsPlayer1, remainingShotsPlayer2 ;
     int finalValuePlayer1, finalValuePlayer2;
     boolean Player1throw, Player2throw;
     ToggleButton toggle;
-    EditText Player1Name, Player2Name, maximShots;
+    EditText Player1Name, Player2Name, ETmaximShots;
     TextView P1Remaining, P2Remaining;
     Spinner spinnerPlayer1, spinnerPlayer2;
     List<String> lstSource = new ArrayList<>();
     LinearLayout LinearLayout1, LinearLayout2;
+    String maxShots;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +39,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         toggle = findViewById(R.id.toggleHelp);
+        toggle.setChecked(false);
         Player1Name = findViewById(R.id.Player1);
         Player2Name = findViewById(R.id.Player2);
 
-//        maximShots = findViewById(R.id.MaximShots);
+        ETmaximShots = findViewById(R.id.MaximShots);
+        maxShots = "5";
 
         generateData();
 
@@ -57,11 +60,11 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout2 = findViewById(R.id.LL2);
         LinearLayout2.setVisibility(View.GONE);
 
-        remainingShotsPlayer1 = 4;
+        remainingShotsPlayer1 = Integer.parseInt(maxShots);
         P1Remaining = findViewById(R.id.P1remainingShots);
         P1Remaining.setText(getString(R.string.p1remainingshots, remainingShotsPlayer1));
 
-        remainingShotsPlayer2 = 4;
+        remainingShotsPlayer2 = Integer.parseInt(maxShots);
         P2Remaining = findViewById(R.id.P2remainingShots);
         P2Remaining.setText(getString(R.string.p2remainingshots, remainingShotsPlayer2));
     }
@@ -83,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * x
+     *
      * This method takes the user input
      */
 
@@ -124,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
         if (finalValuePlayer1 == 0 || finalValuePlayer1 == 21 || finalValuePlayer1 == 22) {
             Context context = getApplicationContext();
             CharSequence text = "Can't have a double of Bullseye or Fault";
-            int duration = Toast.LENGTH_LONG;
+            int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
         } else {
@@ -255,8 +258,10 @@ public class MainActivity extends AppCompatActivity {
         Player1Name.setText("");
         Player2Name.setText("");
         spinnerPlayer1.setSelection(0);
-        remainingShotsPlayer1=4;
-        remainingShotsPlayer2=4;
+        remainingShotsPlayer1= Integer.parseInt(maxShots);
+        P1Remaining.setText(getString(R.string.p1remainingshots, remainingShotsPlayer1));
+        remainingShotsPlayer2= Integer.parseInt(maxShots);
+        P2Remaining.setText(getString(R.string.p2remainingshots, remainingShotsPlayer2));
     }
 
     /**
@@ -370,12 +375,29 @@ public class MainActivity extends AppCompatActivity {
      */
     public void showHint(View v) {
 
-        if (toggle.isChecked()) {
+        if (!toggle.isChecked()) {
             LinearLayout2.setVisibility(View.GONE);
             LinearLayout1.setVisibility(View.VISIBLE);
         } else {
             LinearLayout2.setVisibility(View.VISIBLE);
             LinearLayout1.setVisibility(View.GONE);
+        }
+    }
+
+    /**
+     * This method changes the maximum number of shots
+     */
+    public void changeScore(View view) {
+        maxShots= ETmaximShots.getText().toString();
+
+        remainingShotsPlayer1 = Integer.parseInt(maxShots);
+        remainingShotsPlayer2 = Integer.parseInt(maxShots);
+        if(remainingShotsPlayer1<100 && remainingShotsPlayer2<100) {
+            P1Remaining.setText(getString(R.string.p1remainingshots, remainingShotsPlayer1));
+            P2Remaining.setText(getString(R.string.p2remainingshots, remainingShotsPlayer2));
+        }else{
+            Context context = getApplicationContext();
+            Toast.makeText(context, "Please insert a smaller number of shots!", Toast.LENGTH_SHORT).show();
         }
     }
 }

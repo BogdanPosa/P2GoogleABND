@@ -6,9 +6,9 @@
     <string name="Ax3Points">"Tripla"</string>
     <string name="Ax2Points">"Dubla"</string>
     <string name="ASimpleShot">"Simpla"</string>
-    <string name="hint1">"Punctaj jucator 1"</string>
+    <string name="hint1">"Nume jucator 1"</string>
 
-    <string name="hint2">"Punctaj jucator 2"</string>
+    <string name="hint2">"Nume jucator 2"</string>
     <string name="Player2"><b>Jucator 2</b></string>
     <string name="scoreB">"0"</string>
     <string name="Bx3Points">"Tripla"</string>
@@ -30,5 +30,6 @@
     <string name="hinthead3">Reset</string>
     <string name="hintSubtitle3">Content hint3</string>
     <string name="hint3">Change the maxim number of shots</string>
+    <string name="change">Change number of shots</string>
 
 </resources>
