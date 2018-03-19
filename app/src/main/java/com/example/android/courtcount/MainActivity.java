@@ -20,16 +20,24 @@ public class MainActivity extends AppCompatActivity {
 
     int scorePlayer1 = 0;
     int scorePlayer2 = 0;
-    int remainingShotsPlayer1, remainingShotsPlayer2;
-    int finalValuePlayer1, finalValuePlayer2;
-    boolean Player1throw, Player2throw;
+    int remainingShotsPlayer1;
+    int remainingShotsPlayer2;
+    int finalValuePlayer1;
+    int finalValuePlayer2;
+    boolean player1Throw;
+    boolean player2Throw;
     ToggleButton toggle;
-    EditText Player1Name, Player2Name, ETmaximShots;
-    TextView P1Remaining, P2Remaining;
-    Spinner spinnerPlayer1, spinnerPlayer2;
+    EditText player1Name;
+    EditText player2Name;
+    EditText maximShots;
+    TextView p1Remaining;
+    TextView p2Remaining;
+    Spinner spinnerPlayer1;
+    Spinner spinnerPlayer2;
     List<String> lstSource = new ArrayList<>();
-    LinearLayout LinearLayout1, LinearLayout2;
-    String maxShots;
+    LinearLayout linearLayout1;
+    LinearLayout linearLayout2;
+    String maxShotsValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +46,11 @@ public class MainActivity extends AppCompatActivity {
 
         toggle = findViewById(R.id.toggleHelp);
         toggle.setChecked(false);
-        Player1Name = findViewById(R.id.Player1);
-        Player2Name = findViewById(R.id.Player2);
+        player1Name = findViewById(R.id.Player1);
+        player2Name = findViewById(R.id.Player2);
 
-        ETmaximShots = findViewById(R.id.MaximShots);
-        maxShots = "5";
+        maximShots = findViewById(R.id.MaximShots);
+        maxShotsValue = "5";
 
         generateData();
 
@@ -54,23 +62,22 @@ public class MainActivity extends AppCompatActivity {
         SpinnerAdapter adapter2 = new SpinnerAdapter(lstSource, MainActivity.this);
         spinnerPlayer2.setAdapter(adapter2);
 
-        LinearLayout1 = findViewById(R.id.LL1);
-        LinearLayout2 = findViewById(R.id.LL2);
-        LinearLayout2.setVisibility(View.GONE);
+        linearLayout1 = findViewById(R.id.LL1);
+        linearLayout2 = findViewById(R.id.LL2);
+        linearLayout2.setVisibility(View.GONE);
 
-        remainingShotsPlayer1 = Integer.parseInt(maxShots);
-        P1Remaining = findViewById(R.id.P1remainingShots);
-        P1Remaining.setText(getString(R.string.p1remainingshots, remainingShotsPlayer1));
+        remainingShotsPlayer1 = Integer.parseInt(maxShotsValue);
+        p1Remaining = findViewById(R.id.P1remainingShots);
+        p1Remaining.setText(getString(R.string.p1remainingshots, remainingShotsPlayer1));
 
-        remainingShotsPlayer2 = Integer.parseInt(maxShots);
-        P2Remaining = findViewById(R.id.P2remainingShots);
-        P2Remaining.setText(getString(R.string.p2remainingshots, remainingShotsPlayer2));
+        remainingShotsPlayer2 = Integer.parseInt(maxShotsValue);
+        p2Remaining = findViewById(R.id.P2remainingShots);
+        p2Remaining.setText(getString(R.string.p2remainingshots, remainingShotsPlayer2));
     }
 
     /**
      * This method generates the list view elements
      */
-
     int i;
 
     private void generateData() {
@@ -90,7 +97,6 @@ public class MainActivity extends AppCompatActivity {
     /**
      * This method takes the user input
      */
-
     public void getScore() {
         finalValuePlayer1 = spinnerPlayer1.getSelectedItemPosition();
         finalValuePlayer2 = spinnerPlayer2.getSelectedItemPosition();
@@ -99,10 +105,9 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Increase the score for Team A by 1x point.
      */
-
     public void addOneForTeamA(View v) {
         getScore();
-        Player1throw = true;
+        player1Throw = true;
         remainingShots();
         if (finalValuePlayer1 < 21 && remainingShotsPlayer1 != 0) {
             scorePlayer1 = scorePlayer1 + finalValuePlayer1;
@@ -124,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void addTwoForTeamA(View v) {
         getScore();
-        Player1throw = true;
+        player1Throw = true;
         if (finalValuePlayer1 == 0 || finalValuePlayer1 == 21 || finalValuePlayer1 == 22) {
             Context context = getApplicationContext();
             CharSequence text = getString(R.string.toast1);
@@ -146,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void addThreeForTeamA(View v) {
         getScore();
-        Player1throw = true;
+        player1Throw = true;
         if (finalValuePlayer1 == 0 || finalValuePlayer1 == 21 || finalValuePlayer1 == 22) {
             Context context = getApplicationContext();
             CharSequence text = getString(R.string.toast9);
@@ -182,10 +187,9 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Increase the score for Team A by 1x point.
      */
-
     public void addOneForTeamB(View v) {
         getScore();
-        Player2throw = true;
+        player2Throw = true;
         remainingShots();
         if (finalValuePlayer2 < 21 && remainingShotsPlayer2 != 0) {
             scorePlayer2 = scorePlayer2 + finalValuePlayer2;
@@ -208,7 +212,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void addTwoForTeamB(View v) {
         getScore();
-        Player2throw = true;
+        player2Throw = true;
         remainingShots();
         if (finalValuePlayer2 == 0 || finalValuePlayer2 == 21 || finalValuePlayer2 == 22) {
             Context context = getApplicationContext();
@@ -231,7 +235,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void addThreeForTeamB(View v) {
         getScore();
-        Player2throw = true;
+        player2Throw = true;
         remainingShots();
         if (finalValuePlayer2 == 0 || finalValuePlayer2 == 21 || finalValuePlayer2 == 22) {
             Context context = getApplicationContext();
@@ -249,56 +253,56 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Reset the score for Team
+     * Reset the score for each Team, the spinner selection and sets the maxim shots number to 5
      */
     public void reset(View v) {
         scorePlayer1 = 0;
         displayForTeamA(scorePlayer1);
         scorePlayer2 = 0;
         displayForTeamB(scorePlayer2);
-        Player1Name.setText("");
-        Player2Name.setText("");
+        player1Name.setText("");
+        player2Name.setText("");
         spinnerPlayer1.setSelection(0);
-        maxShots = "5";
-        remainingShotsPlayer1 = Integer.parseInt(maxShots);
-        P1Remaining.setText(getString(R.string.p1remainingshots, remainingShotsPlayer1));
-        remainingShotsPlayer2 = Integer.parseInt(maxShots);
-        P2Remaining.setText(getString(R.string.p2remainingshots, remainingShotsPlayer2));
-        ETmaximShots.setText("");
+        maxShotsValue = "5";
+        remainingShotsPlayer1 = Integer.parseInt(maxShotsValue);
+        p1Remaining.setText(getString(R.string.p1remainingshots, remainingShotsPlayer1));
+        remainingShotsPlayer2 = Integer.parseInt(maxShotsValue);
+        p2Remaining.setText(getString(R.string.p2remainingshots, remainingShotsPlayer2));
+        maximShots.setText("");
     }
 
     /**
-     * Reset the score for Team
+     * Counts down how many shots each team have
      */
     public void remainingShots() {
-        if (Player1throw && remainingShotsPlayer1 != 0) {
-            Player1throw = false;
+        if (player1Throw && remainingShotsPlayer1 != 0) {
+            player1Throw = false;
             remainingShotsPlayer1 = remainingShotsPlayer1 - 1;
-            P1Remaining.setText(getString(R.string.p1remainingshots, remainingShotsPlayer1));
+            p1Remaining.setText(getString(R.string.p1remainingshots, remainingShotsPlayer1));
 
         } else {
-            if (Player1throw) {
+            if (player1Throw) {
                 Context context = getApplicationContext();
                 CharSequence text = getString(R.string.remainingShots) + remainingShotsPlayer1;
                 int duration = Toast.LENGTH_SHORT;
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
-                Player1throw = false;
+                player1Throw = false;
             }
         }
-        if (Player2throw && remainingShotsPlayer2 != 0) {
-            Player2throw = false;
+        if (player2Throw && remainingShotsPlayer2 != 0) {
+            player2Throw = false;
             remainingShotsPlayer2 = remainingShotsPlayer2 - 1;
-            P2Remaining.setText(getString(R.string.p2remainingshots, remainingShotsPlayer2));
+            p2Remaining.setText(getString(R.string.p2remainingshots, remainingShotsPlayer2));
 
         } else {
-            if (Player2throw && !Player1throw) {
+            if (player2Throw && !player1Throw) {
                 Context context = getApplicationContext();
                 CharSequence text = getString(R.string.remainingShots) + remainingShotsPlayer2;
                 int duration = Toast.LENGTH_SHORT;
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
-                Player2throw = false;
+                player2Throw = false;
             }
         }
     }
@@ -306,10 +310,9 @@ public class MainActivity extends AppCompatActivity {
     /**
      * This method compares the score of the teams
      */
-
     public void compare(View v) {
-        String namePlayer1 = Player1Name.getText().toString();
-        String namePlayer2 = Player2Name.getText().toString();
+        String namePlayer1 = player1Name.getText().toString();
+        String namePlayer2 = player2Name.getText().toString();
         if (!namePlayer1.isEmpty() && !namePlayer2.isEmpty()) {
             if (namePlayer1.equals(namePlayer2)) {
                 Context context = getApplicationContext();
@@ -362,14 +365,14 @@ public class MainActivity extends AppCompatActivity {
      * This method changes the maximum number of shots
      */
     public void changeScore(View view) {
-        maxShots = ETmaximShots.getText().toString();
-        if (!maxShots.isEmpty()) {
+        maxShotsValue = maximShots.getText().toString();
+        if (!maxShotsValue.isEmpty()) {
 
-            remainingShotsPlayer1 = Integer.parseInt(maxShots);
-            remainingShotsPlayer2 = Integer.parseInt(maxShots);
+            remainingShotsPlayer1 = Integer.parseInt(maxShotsValue);
+            remainingShotsPlayer2 = Integer.parseInt(maxShotsValue);
             if (remainingShotsPlayer1 < 100 && remainingShotsPlayer2 < 100) {
-                P1Remaining.setText(getString(R.string.p1remainingshots, remainingShotsPlayer1));
-                P2Remaining.setText(getString(R.string.p2remainingshots, remainingShotsPlayer2));
+                p1Remaining.setText(getString(R.string.p1remainingshots, remainingShotsPlayer1));
+                p2Remaining.setText(getString(R.string.p2remainingshots, remainingShotsPlayer2));
             } else {
                 Context context = getApplicationContext();
                 Toast.makeText(context, R.string.toast8, Toast.LENGTH_SHORT).show();
@@ -403,12 +406,11 @@ public class MainActivity extends AppCompatActivity {
     public void showHint(View v) {
 
         if (!toggle.isChecked()) {
-            LinearLayout2.setVisibility(View.GONE);
-            LinearLayout1.setVisibility(View.VISIBLE);
+            linearLayout2.setVisibility(View.GONE);
+            linearLayout1.setVisibility(View.VISIBLE);
         } else {
-            LinearLayout2.setVisibility(View.VISIBLE);
-            LinearLayout1.setVisibility(View.GONE);
+            linearLayout2.setVisibility(View.VISIBLE);
+            linearLayout1.setVisibility(View.GONE);
         }
     }
-
 }
