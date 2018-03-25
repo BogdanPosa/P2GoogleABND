@@ -4,3 +4,4 @@ Beside the project rubric the following features were added:
 - Romananian as 2nd language
 - Toggle button that changes visibility of layouts
 - Spinners
+- Spinner Adapter
